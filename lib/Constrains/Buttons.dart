@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:settle_loans/Constrains/textstyles.dart';
 
 class RoundedButton1 extends StatelessWidget {
   final String text;
@@ -100,6 +101,44 @@ class ButtonWithIcon extends StatelessWidget {
             action
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Containerbutton extends StatelessWidget {
+  final String text;
+  final Function onPressed;
+
+  const Containerbutton(
+      {super.key, required this.text, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+
+      child: Container(
+        height: 100,
+      width:MediaQuery.sizeOf(context).width,
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration( border: Border.all(),),
+      child: Row(
+        children: [
+          Container(
+            width: 100,
+            height: 20,
+            // decoration: BoxDecoration(image: DecorationImage(image: AssetImage('Vector.png'))),
+            ),
+      Column(
+        children: [
+          Text("Card",style: HeadingTextStyle2(),),
+          Text("Visa, Mastercard, RuPay",style: ParaTextStyle1(),
+          )
+          ],
+          )
+          ],
+          ),
+      
       ),
     );
   }
