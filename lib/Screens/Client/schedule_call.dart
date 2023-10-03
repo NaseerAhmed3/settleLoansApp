@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_calendar/booking_calendar.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:settle_loans/Constrains/colors.dart';
+import 'package:settle_loans/Constrains/textstyles.dart';
 
 class ScheduleACall extends StatefulWidget {
   const ScheduleACall({Key? key}) : super(key: key);
@@ -29,7 +32,7 @@ class _ScheduleACallState extends State<ScheduleACall> {
           Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
           callServiceBooking = BookingService(
               serviceName: 'Call Service',
-              serviceDuration: 60,
+              serviceDuration: 30,
               userId: user.uid,
               userEmail: user.email,
               userPhoneNumber: data["phoneNumber"],
@@ -104,11 +107,80 @@ class _ScheduleACallState extends State<ScheduleACall> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Booking Calendar Demo'),
+        automaticallyImplyLeading: false,
+        backgroundColor: Color.fromRGBO(99,99,99,1.000),
+toolbarHeight: 150,
+flexibleSpace:Column(
+
+  mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+             Padding(
+               padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+               child: Row(
+                
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 children: [
+                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                      IconButton(onPressed: (){
+                    Navigator.pop(context);
+                   }, icon: Icon(Icons.arrow_back, size: 30.0,color: Colors.white,)),
+                    Column(
+                      
+                      
+  crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                  'Schedule a Call' ,style: HeadingTextStyle3(),
+               
+                ),
+                // SizedBox(
+                //   width: 10,
+                // ),
+             
+                         Text(
+                'Select date and time' ,style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                   fontWeight: FontWeight.w500,
+                   
+                      fontFamily: GoogleFonts.rubik().fontFamily,
+
+
+                ) ,
+               
+              ),
+                      ],
+                    ),
+                 
+                  ],
+                 ),
+                   Icon(Icons.notifications, size: 30.0,color: Colors.white,),
+                 ],
+             ),)
+           
+             
+    
+             
+            ],
+          ),
       ),
+
+
+
+
+
+      
       body: callServiceBooking != null
           ? Center(
               child: BookingCalendar(
+                bookingButtonColor: Yellow,
+                bookingButtonText: 'Confirm Booking',
+                bookedSlotTextStyle: LabelTextStyle1(),
+                availableSlotColor: Color.fromARGB(255, 248, 235, 190),
+                bookedSlotColor: Color.fromARGB(255, 248, 235, 190),
+                selectedSlotColor: Yellow,
                 bookingService: callServiceBooking!,
                 convertStreamResultToDateTimeRanges: convertStreamResultMock,
                 getBookingStream: getBookingStreamMock,

@@ -7,9 +7,9 @@ import 'package:settle_loans/Components/icons.dart';
 import 'package:settle_loans/Components/shared_prefs.dart';
 import 'package:settle_loans/Constrains/Buttons.dart';
 import 'package:settle_loans/Constrains/colors.dart';
+import 'package:settle_loans/Constrains/iconbuton.dart';
 import 'package:settle_loans/Constrains/textstyles.dart';
 import 'package:settle_loans/Screens/Auth/login.dart';
-import 'package:settle_loans/Screens/Client/client_data.dart';
 import 'package:settle_loans/Screens/Client/paymentgateway.dart';
 import 'package:settle_loans/Screens/Client/schedule_call.dart';
 
@@ -309,6 +309,9 @@ class _ClientHomeState extends State<ClientHome> {
                           ],
                         ),
                       ),
+                 
+                     KIconButton(title: 'Debt free solutions', onPressed: (){}, Img: ''),
+                     KIconButton(title: 'ok', onPressed: (){}, Img: ''),
                 ElevatedButton(onPressed: LogoutHandler, child: Text('Logout')),
               ],
             ),
